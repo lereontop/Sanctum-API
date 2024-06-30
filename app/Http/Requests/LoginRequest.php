@@ -2,18 +2,16 @@
 
 namespace App\Http\Requests;
 
-
-use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return  true;
     }
 
     /**
@@ -24,9 +22,8 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=> ['required', 'string',  'max:200'],
-            'email'=> ['required','string',  'max:200', ],
-            'password'=> ['required', 'confirmed'],
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string', 'min:6']
         ];
     }
 }
